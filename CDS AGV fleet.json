@@ -1,0 +1,390 @@
+{
+  "AGV_Fleet_Manager/": {
+    "description": "Contains data from the AGV Fleet Manager.",
+    "requirement": "mandatory",
+
+    "<Fleet_Name>/": {
+      "datatype": "String",
+      "description": "A user defined name to identify this AGV Fleet Manager.",
+      "requirement": "mandatory",
+
+
+      "Fleet_State/": {
+        "description": "State of the Fleet.",
+        "requirement": "mandatory",
+        "Default_State": {
+          "datatype": "String",
+          "description": "The default state of the fleet",
+          "requirement": "optional"
+        },
+        "Name": {
+          "datatype": "String",
+          "description": "The current name of the fleet",
+          "requirement": "optional"
+        },
+        "State": {
+          "datatype": "UInt32",
+          "description": "The current state of the fleet",
+          "requirement": "optional"
+        }
+      },
+
+
+      "Mission_List/": {
+        "description": "List of missions in the Fleet",
+        "requirement": "optional",
+        "<Mission_Name>": {
+          "datatype": "String",
+          "description": "The name of the mission",
+          "requirement": "mandatory"
+        }
+      },
+
+
+
+      "Robot_List/": {
+        "description": "List of robots in the Fleet.",
+        "requirement": "mandatory",
+        "<Robot_ID>/": {
+          "datatype": "UInt32",
+          "description": "The id identifying the robot",
+          "requirement": "optional",
+          "Active": {
+            "datatype": "Boolean",
+            "description": "Boolean indicating if the robot is active in the fleet",
+            "requirement": "optional"
+          },
+          "Description": {
+            "datatype": "String",
+            "description": "The description of the robot",
+            "requirement": "optional"
+          },
+          "IP": {
+            "datatype": "String",
+            "description": "The ip of the robot",
+            "requirement": "mandatory"
+          },
+          "Robot_Group_ID": {
+            "datatype": "UInt32",
+            "description": "The id of the robot group this robot belongs to",
+            "requirement": "mandatory"
+          },
+          "Robot_Model": {
+            "datatype": "String",
+            "description": "The robot model",
+            "requirement": "optional"
+          },
+          "Serial_Number": {
+            "datatype": "String",
+            "description": "The serial number associated with the robot",
+            "requirement": "optional"
+          },
+          "Status/": {
+            "description": "Contains some of the key variables associated with the current state of the robot.",
+            "requirement": "optional",
+            "Battery_Percentage": {
+              "datatype": "Float",
+              "description": "The current charge percentage of the battery",
+              "requirement": "optional"
+            },
+            "Battery_Time_Remaining": {
+              "datatype": "UInt32",
+              "description": "The approximate time remaining on the battery during normal operation of the robot",
+              "requirement": "optional"
+            },
+            "Distance_To_Next_Target": {
+              "datatype": "Float",
+              "description": "The distance to the next target of the robot",
+              "requirement": "optional"
+            },
+
+            "Errors/": {
+              "description": "List of current errors",
+              "requirement": "optional",
+              "Code": {
+                "datatype": "UInt32",
+                "description": "The error code",
+                "requirement": "optional"
+              },
+              "Description": {
+                "datatype": "String",
+                "description": "The description of the error",
+                "requirement": "optional"
+              },
+              "Module": {
+                "datatype": "String",
+                "description": "The module reporting the error",
+                "requirement": "optional"
+              }
+            },
+
+            "Footprint": {
+              "datatype": "String",
+              "description": "The current footprint of the robot. Footprint values must be entered in meters and the format of the input should be [[x,y], [x,y], [x,y], [x,y]] defining coordinates from the center of the robot. The default footprint sets a point in each corner of the robot: [[0.506,-0.32],[0.506,0.32],[-0.454,0.32],[-0.454,-0.32]]",
+              "requirement": "optional"
+            },
+            "Joystick_Low_Speed_Mode_Enabled": {
+              "datatype": "Boolean",
+              "description": "Joystick control of the robot with low speed",
+              "requirement": "optional"
+            },
+            "Joystick_Web_Session_ID": {
+              "datatype": "String",
+              "description": "The id of the web user that has control over the joystick",
+              "requirement": "optional"
+            },
+            "Map_ID": {
+              "datatype": "UInt32",
+              "description": "The id of the current map the robot recides in",
+              "requirement": "optional"
+            },
+            "Mission_Queue_ID": {
+              "datatype": "UInt32",
+              "description": "The id of the current job the robot executes",
+              "requirement": "optional"
+            },
+            "Mission_Text": {
+              "datatype": "String",
+              "description": "Status message from mission controller eg. 'Starting...' or 'Waiting for new missions...'",
+              "requirement": "optional"
+            },
+
+            "Current_Mode/": {
+              "description": "Current mode of the robot",
+              "requirement": "optional",
+              "Mode_ID": {
+                "datatype": "UInt32",
+                "description": "The id of the current mode of the robot",
+                "requirement": "optional"
+              },
+              "Mode_Key_State": {
+                "datatype": "String",
+                "description": "A textual description of the position of the mode key eg. idle",
+                "requirement": "optional"
+              },
+              "Mode_Text": {
+                "datatype": "String",
+                "description": "A textual description of the current mode of the robot eg. mission",
+                "requirement": "optional"
+              }
+            },
+            "Moved": {
+              "datatype": "Float",
+              "description": "The distance the robot has moved",
+              "requirement": "optional"
+            },
+
+            "Current_Position/": {
+              "description": "Current position of the robot",
+              "requirement": "mandatory",
+              "Pos_X": {
+                "datatype": "Float",
+                "description": "The x-coordinate of the current position of the robot",
+                "requirement": "mandatory"
+              },
+              "Pos_Y": {
+                "datatype": "Float",
+                "description": "The y-coordinate of the current position of the robot",
+                "requirement": "mandatory"
+              },
+              "Orientation": {
+                "datatype": "Float",
+                "description": "The orientation of the current position of the robot",
+                "requirement": "mandatory"
+              }
+            },
+
+            "Robot_Name": {
+              "datatype": "String",
+              "description": "Name of the robot",
+              "requirement": "mandatory"
+            },
+            "Session_ID": {
+              "datatype": "String",
+              "description": "The id of the session the robot recides in",
+              "requirement": "optional"
+            },
+            "Software_Version": {
+              "datatype": "String",
+              "description": "The software version of the robot",
+              "requirement": "optional"
+            },
+            "State_ID": {
+              "datatype": "UInt32",
+              "description": "The id of the current state of the robot",
+              "requirement": "optional"
+            },
+            "State_Text": {
+              "datatype": "String",
+              "description": "A textual description of the current state of the robot eg. Pause",
+              "requirement": "optional"
+            },
+            "Unloaded_Map_Changes": {
+              "datatype": "Boolean",
+              "description": "Any change to the map not yet loaded?",
+              "requirement": "optional"
+            },
+            "Uptime": {
+              "datatype": "UInt32",
+              "description": "The uptime of the robot",
+              "requirement": "optional"
+            },
+            "User_Prompt/": {
+              "description": "Options to await for user input",
+              "requirement": "optional",
+              "GUID": {
+                "datatype": "String",
+                "description": "The global unique id across robots that identifies this resource",
+                "requirement": "optional"
+              },
+              "Options": {
+                "datatype": "String",
+                "description": "The array of options available to the user",
+                "requirement": "optional"
+              },
+              "Question": {
+                "datatype": "String",
+                "description": "The question posed to the user",
+                "requirement": "optional"
+              },
+              "Timeout": {
+                "datatype": "Float",
+                "description": "The timeout for the user prompt",
+                "requirement": "optional"
+              },
+              "User_Group": {
+                "datatype": "String",
+                "description": "The user group that the prompt is availabe to",
+                "requirement": "optional"
+              }
+            },
+            "Current_Velocity/": {
+              "description": "Current velocity of the robot",
+              "requirement": "mandatory",
+              "Linear": {
+                "datatype": "Float",
+                "description": "The linear speed of the robot in m/s",
+                "requirement": "mandatory"
+              },
+              "Angular": {
+                "datatype": "Float",
+                "description": "The angular speed of the robot in degrees/s",
+                "requirement": "mandatory"
+              }
+            }
+
+          }
+
+        }
+
+      },
+
+
+
+      "Mission_Scheduler/": {
+        "description": "Schedule missions to run in the Fleet",
+        "requirement": "mandatory",
+        "<Mission_Scheduler_ID>/": {
+          "datatype": "UInt32",
+          "description": "The id of the mission schedule entry",
+          "requirement": "optional",
+          "Created_By_Name": {
+            "datatype": "String",
+            "description": "The name of the user that requested the mission",
+            "requirement": "optional"
+          },
+          "Description": {
+            "datatype": "String",
+            "description": "Inherited from mission description, when the item was queued",
+            "requirement": "optional"
+          },
+          "Earliest_Start_Time": {
+            "datatype": "DateTime",
+            "description": "The date and time at which the mission should start at the earliest",
+            "requirement": "optional"
+          },
+          "Finish_Time": {
+            "datatype": "DateTime",
+            "description": "The date and time when the mission was finished",
+            "requirement": "optional"
+          },
+          "Fleet_GUID": {
+            "datatype": "String",
+            "description": "The global id unique across robots that identifies this mission schedule element",
+            "requirement": "optional"
+          },
+          "High_Priority": {
+            "datatype": "Boolean",
+            "description": "The urgency of the mission scheduled",
+            "requirement": "optional"
+          },
+          "Mission": {
+            "datatype": "String",
+            "description": "The url to the mission that was scheduled",
+            "requirement": "optional"
+          },
+          "Mission_ID": {
+            "datatype": "String",
+            "description": "The id identifying the mission scheduled by the scheduler",
+            "requirement": "mandatory"
+          },
+          "Order_Time": {
+            "datatype": "DateTime",
+            "description": "The date and time when the mission was scheduled",
+            "requirement": "optional"
+          },
+          "Parameters": {
+            "datatype": "String",
+            "description": "Parameters required for the mission schedule",
+            "requirement": "optional"
+          },
+          "Priority": {
+            "datatype": "UInt32",
+            "description": "The id of the action (the number of missions in the schedule)",
+            "requirement": "optional"
+          },
+          "Robot_ID": {
+            "datatype": "UInt32",
+            "description": "The id of the robot to which the mission was assigned",
+            "requirement": "optional"
+          },
+          "Start_Time": {
+            "datatype": "DateTime",
+            "description": "The date and time when the mission was started",
+            "requirement": "optional"
+          },
+          "State": {
+            "datatype": "String",
+            "description": "The state of the mission schedule eg. 'Pending'",
+            "requirement": "optional"
+          },
+          "Submit_New_Mission_JSON": {
+            "datatype": "String",
+            "description": "Add a mission to the scheduler. Expects JSON input in the form { mission_id: string, robot_id: 0, earliest_start_time: 2021-01-15T11:31:50.676Z, parameters: [ {} ], priority: 0, high_priority: true, description: string, created_by_id: string } Tag value is set to request response",
+            "requirement": "optional"
+          }
+        }
+      },
+
+
+
+      "Users/": {
+        "description": "List of missions in the Fleet",
+        "requirement": "optional",
+        "<User_Name>": {
+          "datatype": "String",
+          "description": "The users which can access the MiR Fleet API",
+          "requirement": "mandatory"
+        }
+      },
+
+
+
+      "User_Defined/": {
+        "description": "this is where tags and variables that don't fit into the rest of this Common Data Structure can be included. The structure here is flexible, but the user should try to keep it logical and easy to navigate. The variable/folder names created within this type should use the `Pascal_Snake_Case` naming convention with capital letters for all first letters of words with underscore delimiters for more than one word or be inherited from the device/protocol in use. Additionally, all folder structures must be delimited with a `/` character",
+        "requirement": "optional"
+      }
+
+    }
+  }
+}

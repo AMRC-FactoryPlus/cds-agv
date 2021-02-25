@@ -1,0 +1,543 @@
+{
+  "AGV_Robot/": {
+    "description": "Contains data from a single AGV robot.",
+    "requirement": "optional",
+
+    "<AGV_Robot_Name>/": {
+      "datatype": "String",
+      "description": "A user defined name to identify the single AGV.",
+      "requirement": "optional",
+
+      "Robot_Summary/": {
+        "description": "Contains some of the key variables associated with the robot.",
+        "requirement": "mandatory",
+        "Robot_Name": {
+          "datatype": "String",
+          "description": "Name of the robot",
+          "requirement": "mandatory"
+        },
+        "Robot_Model": {
+          "datatype": "String",
+          "description": "Model of the robot",
+          "requirement": "optional"
+        },
+        "Serial_Number": {
+          "datatype": "String",
+          "description": "Serial number of the robot",
+          "requirement": "optional"
+        },
+        "Battery_Percentage": {
+          "datatype": "Float",
+          "description": "The current charge percentage of the battery",
+          "requirement": "optional"
+        },
+        "Battery_Time_Remaining": {
+          "datatype": "UInt32",
+          "description": "The approximate time remaining on the battery during normal operation of the robot",
+          "requirement": "optional"
+        },
+        "Moved": {
+          "datatype": "Float",
+          "description": "The distance the robot has moved",
+          "requirement": "optional"
+        },
+        "Uptime": {
+          "datatype": "UInt32",
+          "description": "The uptime of the robot",
+          "requirement": "optional"
+        },
+        "Footprint": {
+          "datatype": "String",
+          "description": "The current footprint of the robot. Footprint values must be entered in meters and the format of the input should be [[x,y], [x,y], [x,y], [x,y]] defining coordinates from the center of the robot. The default footprint sets a point in each corner of the robot: [[0.506,-0.32],[0.506,0.32],[-0.454,0.32],[-0.454,-0.32]]",
+          "requirement": "optional"
+        }
+      },
+
+
+      "Robot_Status/": {
+        "description": "Contains some of the key variables associated with the current state of the robot.",
+        "requirement": "mandatory",
+        "Current_Position/": {
+          "description": "Current position of the robot",
+          "requirement": "mandatory",
+          "Pos_X": {
+            "datatype": "Float",
+            "description": "The x-coordinate of the current position of the robot",
+            "requirement": "mandatory"
+          },
+          "Pos_Y": {
+            "datatype": "Float",
+            "description": "The y-coordinate of the current position of the robot",
+            "requirement": "mandatory"
+          },
+          "Orientation": {
+            "datatype": "Float",
+            "description": "The orientation of the current position of the robot",
+            "requirement": "mandatory"
+          }
+        },
+
+        "Current_Velocity/": {
+          "description": "Current velocity of the robot",
+          "requirement": "mandatory",
+          "Linear": {
+            "datatype": "Float",
+            "description": "The linear speed of the robot in m/s",
+            "requirement": "mandatory"
+          },
+          "Angular": {
+            "datatype": "Float",
+            "description": "The angular speed of the robot in degrees/s",
+            "requirement": "mandatory"
+          }
+        },
+
+        "Current_Map/": {
+          "description": "Current map used by the robot",
+          "requirement": "optional",
+          "GUID": {
+            "datatype": "String",
+            "description": "The global id unique across robots that identifies this map",
+            "requirement": "optional"
+          },
+          "Map": {
+            "datatype": "String",
+            "description": "If this map is a navigation map or not",
+            "requirement": "mandatory"
+          },
+          "Metadata": {
+            "datatype": "String",
+            "description": "If this map is a web map or not",
+            "requirement": "mandatory"
+          },
+          "Name": {
+            "datatype": "String",
+            "description": "The name of the map",
+            "requirement": "mandatory"
+          },
+          "One_Way_Map": {
+            "datatype": "String",
+            "description": "If this map is a one-way map or not",
+            "requirement": "optional"
+          },
+          "Origin_Theta": {
+            "datatype": "Float",
+            "description": "The angle in the map of the center of the map relative to the robots position",
+            "requirement": "mandatory"
+          },
+          "Origin_X": {
+            "datatype": "Float",
+            "description": "The x-coordinate in the map of the center of the map relative to the robots position",
+            "requirement": "mandatory"
+          },
+          "Origin_Y": {
+            "datatype": "Float",
+            "description": "The y-coordinate in the map of the center of the map relative to the robots position",
+            "requirement": "mandatory"
+          },
+          "Path_Guides": {
+            "datatype": "String",
+            "description": "The url to the list of paths in this map",
+            "requirement": "optional"
+          },
+          "Paths": {
+            "datatype": "String",
+            "description": "The url to the list of paths in this map",
+            "requirement": "optional"
+          },
+          "Positions": {
+            "datatype": "String",
+            "description": "The url to the list of positions in this map",
+            "requirement": "optional"
+          },
+          "Resolution": {
+            "datatype": "Float",
+            "description": "The resolution of the map",
+            "requirement": "mandatory"
+          },
+          "Session_ID": {
+            "datatype": "String",
+            "description": "The global id unique across robots of the area containing this map",
+            "requirement": "mandatory"
+          }
+        },
+
+        "Current_Mission/": {
+          "description": "Current mission of the robot",
+          "requirement": "optional",
+          "Mission_Action_List/": {
+            "description": "The list of actions contained in this mission",
+            "requirement": "optional",
+            "<Mission_Action_GUID>/": {
+              "datatype": "String",
+              "description": "The global id unique across robots that identifies this action",
+              "requirement": "optional",
+              "Action_Type": {
+                "datatype": "String",
+                "description": "The id of the type of action",
+                "requirement": "mandatory"
+              },
+              "Mission_ID": {
+                "datatype": "String",
+                "description": "The id of the mission the action belongs to",
+                "requirement": "mandatory"
+              },
+              "Mission_Action_Parameters/": {
+                "description": "The parameters that this action requires",
+                "requirement": "mandatory",
+                "<Parameter_GUID>/": {
+                  "datatype": "String",
+                  "description": "The Guid identifying this parameter",
+                  "requirement": "mandatory"
+                }
+              },
+              "Priority": {
+                "datatype": "UInt32",
+                "description": "The priority of the action",
+                "requirement": "mandatory"
+              }
+            }
+          },
+          "Definition": {
+            "datatype": "String",
+            "description": "The url to the list of input parameters this mission accepts",
+            "requirement": "optional"
+          },
+          "Description": {
+            "datatype": "String",
+            "description": "The description of the mission",
+            "requirement": "optional"
+          },
+          "Group_ID": {
+            "datatype": "String",
+            "description": "The id of the group this mission belongs to, or null if the mission belongs to all groups",
+            "requirement": "mandatory"
+          },
+          "GUID": {
+            "datatype": "String",
+            "description": "The global id unique across robots that identifies this mission",
+            "requirement": "optional"
+          },
+          "Has_User_Parameters": {
+            "datatype": "Boolean",
+            "description": "Indicates if the mission has dynamic parameters",
+            "requirement": "optional"
+          },
+          "Hidden": {
+            "datatype": "Boolean",
+            "description": "If this mission is hidden in the mission list",
+            "requirement": "optional"
+          },
+          "Name": {
+            "datatype": "String",
+            "description": "The name of the mission",
+            "requirement": "mandatory"
+          },
+          "Session_ID": {
+            "datatype": "String",
+            "description": "The id of the area this mission belongs to, or null if the mission belongs to all areas",
+            "requirement": "optional"
+          },
+          "Valid": {
+            "datatype": "Boolean",
+            "description": "Indicates if the mission contains only existing submissions",
+            "requirement": "optional"
+          }
+        },
+
+        "Current_Mode/": {
+          "description": "Current mode of the robot",
+          "requirement": "optional",
+          "Mode_ID": {
+            "datatype": "UInt32",
+            "description": "The id of the current mode of the robot",
+            "requirement": "optional"
+          },
+          "Mode_Key_State": {
+            "datatype": "String",
+            "description": "A textual description of the position of the mode key eg. idle",
+            "requirement": "optional"
+          },
+          "Mode_Text": {
+            "datatype": "String",
+            "description": "A textual description of the current mode of the robot eg. mission",
+            "requirement": "optional"
+          }
+        },
+
+        "Distance_To_Next_Target": {
+          "datatype": "Float",
+          "description": "The distance to the next target of the robot",
+          "requirement": "optional"
+        },
+
+        "Errors/": {
+          "description": "List of current errors",
+          "requirement": "optional",
+          "Code": {
+            "datatype": "UInt32",
+            "description": "The error code",
+            "requirement": "optional"
+          },
+          "Description": {
+            "datatype": "String",
+            "description": "The description of the error",
+            "requirement": "optional"
+          },
+          "Module": {
+            "datatype": "String",
+            "description": "The module reporting the error",
+            "requirement": "optional"
+          }
+        },
+        "Joystick_Low_Speed_Mode_Enabled": {
+          "datatype": "Boolean",
+          "description": "Joystick control of the robot with low speed",
+          "requirement": "optional"
+        },
+        "Joystick_Web_Session_ID": {
+          "datatype": "String",
+          "description": "The id of the web user that has control over the joystick",
+          "requirement": "optional"
+        },
+        "Mission_Queue_ID": {
+          "datatype": "UInt32",
+          "description": "The id of the current job the robot executes",
+          "requirement": "optional"
+        },
+        "Mission_Text": {
+          "datatype": "String",
+          "description": "Status message from mission controller eg. 'Starting...' or 'Waiting for new missions...'",
+          "requirement": "optional"
+        },
+        "Session_ID": {
+          "datatype": "String",
+          "description": "The id of the session the robot recides in",
+          "requirement": "optional"
+        },
+        "State_ID": {
+          "datatype": "UInt32",
+          "description": "The id of the current state of the robot",
+          "requirement": "optional"
+        },
+        "State_Text": {
+          "datatype": "String",
+          "description": "A textual description of the current state of the robot eg. Pause",
+          "requirement": "optional"
+        },
+        "Unloaded_Map_Changes": {
+          "datatype": "Boolean",
+          "description": "Any change to the map not yet loaded?",
+          "requirement": "optional"
+        },
+        "User_Prompt/": {
+          "description": "Options to await for user input",
+          "requirement": "optional",
+          "GUID": {
+            "datatype": "String",
+            "description": "The global unique id across robots that identifies this resource",
+            "requirement": "optional"
+          },
+          "Options": {
+            "datatype": "String",
+            "description": "The array of options available to the user",
+            "requirement": "optional"
+          },
+          "Question": {
+            "datatype": "String",
+            "description": "The question posed to the user",
+            "requirement": "optional"
+          },
+          "Timeout": {
+            "datatype": "Float",
+            "description": "The timeout for the user prompt",
+            "requirement": "optional"
+          },
+          "User_Group": {
+            "datatype": "String",
+            "description": "The user group that the prompt is availabe to",
+            "requirement": "optional"
+          }
+        }
+
+      },
+
+
+      "Mission_Queue/": {
+        "description": "The list of missions in the queue for the robot. Finished, failed, pending and executing missions will be displayed here",
+        "requirement": "optional",
+        "<Mission_Queue_ID>/": {
+          "datatype": "UInt32",
+          "description": "The id of the mission queue entry",
+          "requirement": "mandatory",
+          "Control_Pos_ID": {
+            "datatype": "String",
+            "description": "Global id of position used during control states",
+            "requirement": "optional"
+          },
+          "Control_State": {
+            "datatype": "String",
+            "description": "Mission control state. a value above zero indicates that the robot needs an external input in order to continue",
+            "requirement": "optional"
+          },
+          "Description": {
+            "datatype": "String",
+            "description": "Inerited from mission description, when item was queued",
+            "requirement": "optional"
+          },
+          "Finished": {
+            "datatype": "DateTime",
+            "description": "The date and time when the mission was finished",
+            "requirement": "optional"
+          },
+          "Fleet_Schedule_GUID": {
+            "datatype": "String",
+            "description": "The guid of the mission scheduler element this mission queue element corresponds to on the fleet",
+            "requirement": "optional"
+          },
+          "Message": {
+            "datatype": "String",
+            "description": "The last message produced by the actions in the mission list",
+            "requirement": "optional"
+          },
+          "Mission": {
+            "datatype": "String",
+            "description": "The URL to the mission that was executed",
+            "requirement": "optional"
+          },
+          "Mission_ID": {
+            "datatype": "String",
+            "description": "The global id of the mission that was executed",
+            "requirement": "optional"
+          },
+          "Ordered": {
+            "datatype": "DateTime",
+            "description": "The date and time when the mission was queued",
+            "requirement": "optional"
+          },
+          "Parameters": {
+            "datatype": "String",
+            "description": "Parameters required for the mission",
+            "requirement": "optional"
+          },
+          "Priority": {
+            "datatype": "UInt32",
+            "description": "The id of the action (the number of missions in the queue)",
+            "requirement": "optional"
+          },
+          "Started": {
+            "datatype": "DateTime",
+            "description": "The date and time when the mission was started",
+            "requirement": "optional"
+          },
+          "State": {
+            "datatype": "String",
+            "description": "The end state after the mission was executed",
+            "requirement": "optional"
+          }
+        }
+      },
+
+
+      "Hook/": {
+        "description": "Contains information about the hook",
+        "requirement": "optional",
+        "Available": {
+          "datatype": "Boolean",
+          "description": "Boolean indicating if the hook is available on this robot",
+          "requirement": "optional"
+        },
+        "Angle": {
+          "datatype": "Float",
+          "description": "The current angle of the hook",
+          "requirement": "optional"
+        },
+        "Brake/": {
+          "description": "Contains information about the hook's brake",
+          "requirement": "optional",
+          "Braked": {
+            "datatype": "Boolean",
+            "description": "Whether the hook brake is activated or not",
+            "requirement": "optional"
+          },
+          "State": {
+            "datatype": "UInt32",
+            "description": "The state of the hook brake in machine format",
+            "requirement": "optional"
+          },
+          "State_String": {
+            "datatype": "String",
+            "description": "The state of the hook brake in human format",
+            "requirement": "optional"
+          }
+        },
+        "Gripper/": {
+          "description": "Contains information about the hook's gripper",
+          "requirement": "optional",
+          "Closed": {
+            "datatype": "Boolean",
+            "description": "Whether the hook gripper is closed or not",
+            "requirement": "optional"
+          },
+          "State": {
+            "datatype": "UInt32",
+            "description": "The state of the hook gripper in machine format",
+            "requirement": "optional"
+          },
+          "State_String": {
+            "datatype": "String",
+            "description": "The state of the hook gripper in human format",
+            "requirement": "optional"
+          }
+        },
+        "Cart_Attached": {
+          "datatype": "Boolean",
+          "description": "Boolean indicating if a trolley is currently attached",
+          "requirement": "optional"
+        },
+        "Cart/": {
+          "description": "Contains information about the cart (if CartAttached = True)",
+          "requirement": "optional",
+          "ID": {
+            "datatype": "Float",
+            "description": "The id of the attached trolley",
+            "requirement": "optional"
+          },
+          "Height": {
+            "datatype": "Float",
+            "description": "The height of the attached trolley",
+            "requirement": "optional"
+          },
+          "Length": {
+            "datatype": "Float",
+            "description": "The length of the attached trolley",
+            "requirement": "optional"
+          },
+          "Width": {
+            "datatype": "Float",
+            "description": "The width of the attached trolley",
+            "requirement": "optional"
+          }
+        },
+        "Height": {
+          "datatype": "Float",
+          "description": "The current height of the hook",
+          "requirement": "optional"
+        },
+        "Length": {
+          "datatype": "Float",
+          "description": "The current length of the hook",
+          "requirement": "optional"
+        }
+      },
+
+
+
+      "User_Defined/": {
+        "description": "this is where tags and variables that don't fit into the rest of this Common Data Structure can be included. The structure here is flexible, but the user should try to keep it logical and easy to navigate. The variable/folder names created within this type should use the `Pascal_Snake_Case` naming convention with capital letters for all first letters of words with underscore delimiters for more than one word or be inherited from the device/protocol in use. Additionally, all folder structures must be delimited with a `/` character",
+        "requirement": "optional"
+      }
+
+    }
+  }
+}
